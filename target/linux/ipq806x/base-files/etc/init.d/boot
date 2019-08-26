@@ -36,7 +36,8 @@ start() {
 	# generate the firewall rule file after loading the configuration data.
 	/usr/sbin/net-wall rule
 	
-	if [ "$(/bin/config get insight_resetflag)" != "1" ]; then
+
+	if [ "$(/bin/config get netbiosname)" = "R7800" ]; then
 		touch /etc/config/insight_resetflag
 	fi
 
@@ -319,7 +320,6 @@ start() {
 	/bin/config set GUI_Region="English"
 	/bin/config set GUI_Region_New="English"
 	/bin/config set New_Language="English"
-	/bin/config set insight_resetflag="1"
 	
 	# load ct_default config
 	/usr/sbin/ct_default.sh load
